@@ -7,3 +7,5 @@ notifications:
   email: false
 
 sudo: false
+
+script: mvn clean verify
