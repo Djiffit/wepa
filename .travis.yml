@@ -8,4 +8,4 @@ notifications:
 
 sudo: false
 
-script: mvn -f /pom.xml clean verify
+script: mvn clean verify
