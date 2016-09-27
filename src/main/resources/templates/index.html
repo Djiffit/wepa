@@ -8,9 +8,14 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
-<form class="col-md-1" th:if="${username != null}" method="post" action="#" th:action="@{/logout}">
-    <input class="btn btn-xs btn-default" type="submit" name="logout" value="Logout"/>
-</form>
+<a th:if="${home != null}" th:href="@{'/home'}" th:text="@{'Home'}" class="btn btn-xs btn-default col-sm-1"/>
+<div th:if="${home == null}">
+    <form class="col-md-1" th:if="${username != null}" method="post" action="#" th:action="@{/logout}">
+        <input class="btn btn-xs btn-default col-sm-1" type="submit" name="logout" value="Logout"/>
+    </form>
+    <a th:if="${username == null}" th:href="@{'/login'}" th:text="@{'Login'}" class="btn btn-xs btn-default col-sm-1"/>
+    <a th:if="${username == 'admin'}" th:href="@{'/persons/list'}" th:text="@{'Userlist'}" class="btn btn-xs btn-default col-sm-1"/>
+</div>
 <div class="container">
     <div th:if="${not #lists.isEmpty(errors)}" th:each="error : ${errors}" class="alert alert-danger" >
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

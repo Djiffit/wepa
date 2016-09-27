@@ -82,6 +82,7 @@ public class TagsController {
             notificationService.add(new Notification("error", "Provided tag could not be found!"));
             return "redirect:/home";
         }
+        model.addAttribute("home", true);
         return "index";
     }
 }

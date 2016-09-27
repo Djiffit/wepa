@@ -24,6 +24,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.DELETE).authenticated()
                 .antMatchers(HttpMethod.POST, "/tags").authenticated()
                 .antMatchers("/tasks/*").authenticated()
+                .antMatchers(HttpMethod.GET, "/persons/list").hasAnyAuthority("ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/persons/").hasAnyAuthority("ADMIN")
                 .anyRequest().permitAll();
 
         http.formLogin()

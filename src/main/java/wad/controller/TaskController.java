@@ -99,14 +99,14 @@ public class TaskController {
             task.setDescription(description);
             task.setPriority(priority);
             taskRepository.save(task);
+            if (tagId != null) {
+                Tag tag = tagRepository.findOne(tagId);
+                task.getTags().add(tag);
+                tag.getTasks().add(task);
+            }
             notificationService.add(new Notification("success", "Task created successfully!"));
         } else {
             notificationService.add(new Notification("error", "Failed to create a new task!"));
-        }
-        if (tagId != null) {
-            Tag tag = tagRepository.findOne(tagId);
-            task.getTags().add(tag);
-            tag.getTasks().add(task);
         }
         return "redirect:/index";
     }
