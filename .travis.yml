@@ -7,3 +7,5 @@ notifications:
   email: false
 
 sudo: false
+
+script: mvn -f /pom.xml clean verify
