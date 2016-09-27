@@ -24,7 +24,7 @@
         <div class="panel-body">
             <form method="POST" th:action="@{/tasks/} + ${task.id} + @{/save} ">
                 <div class="form-group">
-                    <input class="form-control" placeholder="Title" th:value="${task.name}" name="name" type="text" autofocus=""/>
+                    <input id="taskTitle" class="form-control" placeholder="Title" th:value="${task.name}" name="name" type="text" autofocus=""/>
                 </div>
                 <div class="form-group">
                     <textarea class="form-control" rows="5" th:text="${task.description}" placeholder="Description" name="description" id="description"></textarea>
@@ -45,7 +45,7 @@
                     <option value="9">9</option>
                     <option value="10">10</option>
                 </select>
-                <button class="btn btn-default" type="submit">Save</button>
+                <button id="saveButton" class="btn btn-default" type="submit">Save</button>
             </form>
             <div th:if="${not #lists.isEmpty(task.tags)}">
                 <form style="padding-top: 20px;" class="form-horizontal" th:method="DELETE" th:action="@{/tasks/} + ${task.id} + @{/tag}">
@@ -55,7 +55,7 @@
                                 <option th:each="tag : ${task.tags}" th:value="${tag.id}" th:text="${tag.name}"></option>
                             </select>
                         </div>
-                        <button class="btn btn-danger" type="submit">Delete tag</button>
+                        <button id="deleteTag" class="btn btn-danger" type="submit">Delete tag</button>
                     </div>
                 </form>
             </div>

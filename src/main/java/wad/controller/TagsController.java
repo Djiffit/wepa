@@ -36,7 +36,8 @@ public class TagsController {
     @RequestMapping(method = RequestMethod.POST)
     public String createTag(@RequestParam String name) {
         Tag tag = new Tag();
-        if (name.length() > 0) {
+        if (name.length() > 0
+                && tagRepository.findByName(name) == null) {
             tag.setName(name);
             tagRepository.save(tag);
             notificationService.add(new Notification("success", "Tag was created successfully!"));
