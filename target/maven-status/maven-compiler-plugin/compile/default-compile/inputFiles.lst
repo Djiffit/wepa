@@ -1,0 +1,17 @@
+/media/konstaku/e28fbe04-44ba-4312-be98-6e5dcab5e2c2/Documents/Checklist/Checklist/src/main/java/wad/service/PersonService.java
+/media/konstaku/e28fbe04-44ba-4312-be98-6e5dcab5e2c2/Documents/Checklist/Checklist/src/main/java/wad/domain/Tag.java
+/media/konstaku/e28fbe04-44ba-4312-be98-6e5dcab5e2c2/Documents/Checklist/Checklist/src/main/java/wad/repository/TaskRepository.java
+/media/konstaku/e28fbe04-44ba-4312-be98-6e5dcab5e2c2/Documents/Checklist/Checklist/src/main/java/wad/controller/PersonController.java
+/media/konstaku/e28fbe04-44ba-4312-be98-6e5dcab5e2c2/Documents/Checklist/Checklist/src/main/java/wad/domain/Task.java
+/media/konstaku/e28fbe04-44ba-4312-be98-6e5dcab5e2c2/Documents/Checklist/Checklist/src/main/java/wad/auth/JpaAuthenticationProvider.java
+/media/konstaku/e28fbe04-44ba-4312-be98-6e5dcab5e2c2/Documents/Checklist/Checklist/src/main/java/wad/controller/TagsController.java
+/media/konstaku/e28fbe04-44ba-4312-be98-6e5dcab5e2c2/Documents/Checklist/Checklist/src/main/java/wad/repository/PersonRepository.java
+/media/konstaku/e28fbe04-44ba-4312-be98-6e5dcab5e2c2/Documents/Checklist/Checklist/src/main/java/wad/repository/TagRepository.java
+/media/konstaku/e28fbe04-44ba-4312-be98-6e5dcab5e2c2/Documents/Checklist/Checklist/src/main/java/wad/domain/Person.java
+/media/konstaku/e28fbe04-44ba-4312-be98-6e5dcab5e2c2/Documents/Checklist/Checklist/src/main/java/wad/controller/DefaultController.java
+/media/konstaku/e28fbe04-44ba-4312-be98-6e5dcab5e2c2/Documents/Checklist/Checklist/src/main/java/wad/service/Notification.java
+/media/konstaku/e28fbe04-44ba-4312-be98-6e5dcab5e2c2/Documents/Checklist/Checklist/src/main/java/wad/config/DatabaseConfig.java
+/media/konstaku/e28fbe04-44ba-4312-be98-6e5dcab5e2c2/Documents/Checklist/Checklist/src/main/java/wad/config/SecurityConfiguration.java
+/media/konstaku/e28fbe04-44ba-4312-be98-6e5dcab5e2c2/Documents/Checklist/Checklist/src/main/java/wad/service/NotificationService.java
+/media/konstaku/e28fbe04-44ba-4312-be98-6e5dcab5e2c2/Documents/Checklist/Checklist/src/main/java/wad/Application.java
+/media/konstaku/e28fbe04-44ba-4312-be98-6e5dcab5e2c2/Documents/Checklist/Checklist/src/main/java/wad/controller/TaskController.java

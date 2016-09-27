@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Muistilista</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+<form class="col-md-1" th:if="${username != null}" method="post" action="#" th:action="@{/logout}">
+    <input class="btn btn-xs btn-default" type="submit" name="logout" value="Logout"/>
+</form>
+<div class="container">
+    <div th:if="${not #lists.isEmpty(errors)}" th:each="error : ${errors}" class="alert alert-danger" >
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Error! </strong> <p th:text="${error.message}"></p>
+    </div>
+    <div th:if="${not #lists.isEmpty(successes)}" th:each="success : ${successes}" class="alert alert-success" >
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Success! </strong> <p th:text="${success.message}"></p>
+    </div>
+    <div th:if="${username != null}" class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title">Create Task</h3>
+        </div>
+        <div class="panel-body">
+            <form method="POST" th:action="@{/tasks}">
+                <div class="form-group">
+                    <input class="form-control" placeholder="Title" name="name" type="text" autofocus=""/>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" rows="5" placeholder="Description" name="description" id="description"></textarea>
+                </div>
+
+                <div style="margin-bottom: 20px;" class="input-group">
+                    <span class="input-group-addon">Pick Priority</span>
+                    <select name="priority" id="priority" class="form-control">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </div>
+                <div style="margin-bottom: 20px;" class="input-group">
+                    <span class="input-group-addon">Choose tag</span>
+                    <select name="tagId" id="tagId" class="form-control">
+                        <option value=""></option>
+                        <option th:each="tag : ${tags}" th:value="${tag.id}" th:text="${tag.name}"></option>
+                    </select>
+                </div>
+                <button class="btn btn-default" type="submit">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">Tags</h3>
+        </div>
+        <div class="panel-body">
+            <form th:if="${username != null}" method="POST" th:action="@{/tags}">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">Create a New Tag</span>
+                        <input class="form-control" placeholder="Name" name="name" type="text" autofocus=""/>
+                        <span class="input-group-btn">
+                            <button class="btn btn-success" type="submit">Create</button>
+                        </span>
+                    </div>
+                </div>
+            </form>
+            <div th:if="${not #lists.isEmpty(tags)}">
+                <form method="POST" th:action="@{/tags/browse}">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">Browse by Tag</span>
+                            <select name="tagName" id="tagName" class="form-control">
+                                <option th:each="tag : ${tags}" th:value="${tag.name}" th:text="${tag.name}"></option>
+                            </select>
+                            <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">Browse</button>
+                        </span>
+                        </div>
+                    </div>
+                </form>
+                <form th:if="${username != null}" th:method="DELETE" th:action="@{/tags}">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">Delete a Tag</span>
+                            <select name="tagId" id="tagId" class="form-control">
+                                <option th:each="tag : ${tags}" th:value="${tag.id}" th:text="${tag.name}"></option>
+                            </select>
+                            <span class="input-group-btn">
+                            <button class="btn btn-danger" type="submit">Delete</button>
+                        </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="panel panel-info">-->
+    <!--<div class="panel-heading">-->
+    <!--<h3 class="panel-title">Browse by tag</h3>-->
+    <!--</div>-->
+    <!--<div class="panel-body">-->
+    <!--<form method="POST" th:action="@{/tags/browse}">-->
+    <!--<div class="form-group">-->
+    <!--<div class="input-group">-->
+    <!--<span class="input-group-addon">Choose tag</span>-->
+    <!--<select name="tagName" id="tagName" class="form-control">-->
+    <!--<option th:each="tag : ${tags}" th:value="${tag.name}" th:text="${tag.name}"></option>-->
+    <!--</select>-->
+    <!--<span class="input-group-btn">-->
+    <!--<button class="btn btn-default" type="submit">Browse</button>-->
+    <!--</span>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</form>-->
+    <!--</div>-->
+    <!--</div>-->
+
+    <div class="panel panel-danger" th:each="task : ${tasks}">
+        <div class="panel-heading">
+            <div class="row">
+                <h3 class="panel-title col-md-10" th:text="${task.name}"></h3>
+
+            </div>
+        </div>
+        <div class="panel-body" style="word-break: break-all;" >
+            <a th:if="${username != null}" style="float: right;" th:href="@{/tasks/} + ${task.id}" class="btn btn-xs btn-success" role="button">Edit</a>
+            <form th:if="${username != null}" style="float: right;" th:action="@{/tasks/} + ${task.id}" th:method="DELETE">
+                <input class="btn btn-xs btn-danger" type="submit" value="Remove" th:id="${'remove-' + task.id}"/>
+            </form>
+            <p th:text="@{'Task priority: '} + ${task.priority}">Priority: </p>
+            <p th:text="${task.description}"></p>
+            <div th:if="${not #lists.isEmpty(tags)}">
+                <form th:if="${username != null}" method="post" th:action="@{/tasks/}+${task.id}">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                            <button class="btn btn-sm btn-default" type="submit">Add tag</button>
+                                </span>
+                            <select class="form-control input-sm" name="tagId" id="tagId" >
+                                <option th:each="tag : ${tags}" th:value="${tag.id}" th:text="${tag.name}"></option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+                <p></p>
+                <div th:if="${not #lists.isEmpty(task.tags)}" class="panel-footer">
+                    <div class="row">
+                        <div class="btn-group btn-xs" role="group" aria-label="tags">
+                            <a th:each="tag : ${task.tags}" th:href="@{/tags/} + ${tag.name}" class="btn btn-sm btn-default" role="button" th:text="${tag.name}">Edit</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
