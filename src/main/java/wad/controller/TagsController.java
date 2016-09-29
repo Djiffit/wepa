@@ -15,6 +15,8 @@ import wad.service.Notification;
 import wad.service.NotificationService;
 import wad.service.PersonService;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @Controller
@@ -72,8 +74,14 @@ public class TagsController {
                               @PathVariable String tag) {
         Tag t = tagRepository.findByName(tag);
         if (t != null) {
-            List<Task> tasks = taskRepository.findTasksByTag(t);
+            List<Task> tasks = taskRepository.findByTag(t);
             model.addAttribute("tasks", tasks);
+            Collections.sort(tasks, new Comparator<Task>() {
+                @Override
+                public int compare(Task task, Task t1) {
+                    return t1.getPriority() - task.getPriority();
+                }
+            });
             model.addAttribute("tags", tagRepository.findAll());
             if (personService.getAuthenticatedPerson() != null) {
                 model.addAttribute("username", personService.getAuthenticatedPerson().getUsername());

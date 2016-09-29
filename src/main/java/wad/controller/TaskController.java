@@ -76,12 +76,12 @@ public class TaskController {
         Tag tag = tagRepository.findOne(tagId);
         Task task = taskRepository.findOne(id);
         if (tag != null && task != null
-                && !taskRepository.findTasksByTag(tag).contains(task)) {
+                && !taskRepository.findByTag(tag).contains(task)) {
             task.getTags().add(tag);
             tag.getTasks().add(task);
             notificationService.add(new Notification("success", "Tag added successfully!"));
         } else {
-            if (taskRepository.findTasksByTag(tag).contains(task)) {
+            if (taskRepository.findByTag(tag).contains(task)) {
                 notificationService.add(new Notification("error", "Task already has this tag!"));
             } else {
                 notificationService.add(new Notification("error", "Failed to add tag!"));

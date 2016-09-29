@@ -7,6 +7,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
+import javax.persistence.OrderBy;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,7 @@ public class Task extends AbstractPersistable<Long> {
     @Length(max= 1000)
     private String description;
 
+    @OrderBy("priority, DESC")
     private int priority;
 
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "tasks")
