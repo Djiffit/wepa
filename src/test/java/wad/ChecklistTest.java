@@ -146,7 +146,9 @@ public class ChecklistTest extends FluentTest {
         assertTrue(pageSource().contains("Error"));
         goTo("http://localhost:" + port);
 
-        click(find("#editTaskLink"));
+        System.out.println(pageSource());
+
+        click(find("#editTaskLink").first());
 
         fill(find("#taskTitle")).with("");
 

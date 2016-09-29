@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Random;
 
 @Configuration
-@Profile("test")
+@Profile("default")
 public class TestConfiguration {
 
     @Autowired
@@ -46,7 +46,7 @@ public class TestConfiguration {
         person.setPassword("pekka");
         personRepository.save(person);
         Tag tag = new Tag();
-        tag.setName("antoisaa");
+        tag.setName("TESTITAGI");
         List<Task> tasks = tag.getTasks();
         tag.setTasks(tasks);
         tagRepository.save(tag);
