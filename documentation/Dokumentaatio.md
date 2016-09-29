@@ -20,3 +20,5 @@ Sovelluksen adminkäyttäjä pystyy aiempien ohella myös
   - Poistamaan luotuja tunnuksia
 
 Continuous deployment on sovellukseen konfiguroitu Herokun dashboardin tarjoaman CD toiminnallisuuden avulla. Kun master branchiin lisätään jotain uutta, Heroku odottaa että Travis buildi suoritetaan onnistuneesti, jonka jälkeen uusin versio siirtyy suoraan Herokuun.
+
+Adminkäyttäjän nimi ja salasana ovat admin.
