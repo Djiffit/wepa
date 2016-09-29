@@ -1,31 +1,16 @@
 package wad.profiles;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-import org.apache.commons.dbcp2.BasicDataSource;
-import wad.domain.Person;
-import wad.repository.PersonRepository;
 
-import javax.annotation.PostConstruct;
 import java.net.URI;
 import java.net.URISyntaxException;
 
 @Configuration
 @Profile("production")
 public class ProductionConfiguration {
-
-    @Autowired
-    private PersonRepository personRepository;
-
-    @PostConstruct
-    public void init() {
-        Person person = new Person();
-        person.setUsername("admin");
-        person.setPassword("admin");
-        personRepository.save(person);
-    }
 
     @Bean
     public BasicDataSource dataSource() throws URISyntaxException {

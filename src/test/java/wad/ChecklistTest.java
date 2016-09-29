@@ -64,7 +64,6 @@ public class ChecklistTest extends FluentTest {
         createTask();
         submit(find("#deleteTaskForm").first());
         assertTrue(pageSource().contains("Task was successfully deleted"));
-        System.out.println(pageSource());
     }
 
     @Test

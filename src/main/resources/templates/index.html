@@ -10,7 +10,7 @@
 <body>
 <a th:if="${home != null}" th:href="@{'/home'}" th:text="@{'Home'}" class="btn btn-xs btn-default col-sm-1"/>
 <div th:if="${home == null}">
-    <form class="col-md-1" th:if="${username != null}" method="post" action="#" th:action="@{/logout}">
+    <form th:if="${username != null}" method="post" action="#" th:action="@{/logout}">
         <input class="btn btn-xs btn-default col-sm-1" type="submit" name="logout" value="Logout"/>
     </form>
     <a th:if="${username == null}" th:href="@{'/login'}" th:text="@{'Login'}" class="btn btn-xs btn-default col-sm-1"/>
@@ -112,27 +112,6 @@
             </div>
         </div>
     </div>
-
-    <!--<div class="panel panel-info">-->
-    <!--<div class="panel-heading">-->
-    <!--<h3 class="panel-title">Browse by tag</h3>-->
-    <!--</div>-->
-    <!--<div class="panel-body">-->
-    <!--<form method="POST" th:action="@{/tags/browse}">-->
-    <!--<div class="form-group">-->
-    <!--<div class="input-group">-->
-    <!--<span class="input-group-addon">Choose tag</span>-->
-    <!--<select name="tagName" id="tagName" class="form-control">-->
-    <!--<option th:each="tag : ${tags}" th:value="${tag.name}" th:text="${tag.name}"></option>-->
-    <!--</select>-->
-    <!--<span class="input-group-btn">-->
-    <!--<button class="btn btn-default" type="submit">Browse</button>-->
-    <!--</span>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</form>-->
-    <!--</div>-->
-    <!--</div>-->
 
     <div class="panel panel-danger" th:each="task : ${tasks}">
         <div class="panel-heading">
