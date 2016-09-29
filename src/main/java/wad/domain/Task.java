@@ -15,7 +15,7 @@ import java.util.List;
 public class Task extends AbstractPersistable<Long> {
 
     @NotBlank
-    @Length(max = 50)
+    @Length(max = 500)
     private String name;
 
     @Length(max= 1000)

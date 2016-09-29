@@ -98,6 +98,8 @@ public class TaskController {
                              @RequestParam Long tagId) {
         Task task = new Task();
         if (name.length() > 0
+                && name.length() < 500
+                && description.length() < 1000
                 && description.length() > 0
                 && priority > -1) {
             task.setName(name);

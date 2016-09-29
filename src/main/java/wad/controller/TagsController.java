@@ -39,6 +39,7 @@ public class TagsController {
     public String createTag(@RequestParam String name) {
         Tag tag = new Tag();
         if (name.length() > 0
+                && name.length() < 80
                 && tagRepository.findByName(name) == null) {
             tag.setName(name);
             tagRepository.save(tag);

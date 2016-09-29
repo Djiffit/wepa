@@ -1,5 +1,6 @@
 package wad.domain;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
@@ -14,6 +15,7 @@ public class Tag extends AbstractPersistable<Long> {
     private List<Task> tasks;
 
     @NotBlank
+    @Length(max = 80)
     @Column(unique = true)
     private String name;
 
