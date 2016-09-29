@@ -18,3 +18,5 @@ Kirjautunut käyttäjä pystyy edellisten lisäksi myös:
 Sovelluksen adminkäyttäjä pystyy aiempien ohella myös
   - Tarkastelemaan sovellukseen luotuja tunnuksia
   - Poistamaan luotuja tunnuksia
+
+Continuous deployment on sovellukseen konfiguroitu Herokun dashboardin tarjoaman CD toiminnallisuuden avulla. Kun master branchiin lisätään jotain uutta, Heroku odottaa että Travis buildi suoritetaan onnistuneesti, jonka jälkeen uusin versio siirtyy suoraan Herokuun.
