@@ -75,12 +75,17 @@ public class TaskController {
     public String addTag(@RequestParam Long tagId, @PathVariable Long id) {
         Tag tag = tagRepository.findOne(tagId);
         Task task = taskRepository.findOne(id);
-        if (tag != null && task != null) {
+        if (tag != null && task != null
+                && !taskRepository.findTasksByTag(tag).contains(task)) {
             task.getTags().add(tag);
             tag.getTasks().add(task);
             notificationService.add(new Notification("success", "Tag added successfully!"));
         } else {
-            notificationService.add(new Notification("error", "Failed to add tag!"));
+            if (taskRepository.findTasksByTag(tag).contains(task)) {
+                notificationService.add(new Notification("error", "Task already has this tag!"));
+            } else {
+                notificationService.add(new Notification("error", "Failed to add tag!"));
+            }
         }
         return "redirect:/home";
     }
