@@ -10,6 +10,8 @@ import java.util.List;
 
 public interface TaskRepository extends JpaRepository<Task, Long>{
 
+    Task findByName(String name);
+
     @Query("SELECT t FROM Task t WHERE :tag MEMBER OF t.tags")
     List<Task> findTasksByTag(@Param("tag") Tag tag);
 }
